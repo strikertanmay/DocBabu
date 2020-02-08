@@ -2,11 +2,12 @@
     <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
-                <div class="card-header bg-transparent pb-5">
+                <!-- <div class="card-header bg-transparent pb-5">
                     <div class="text-muted text-center mt-2 mb-3">
-                        <small>Sign up with</small>
+                        <small>Sign up with</small> 
+                        
                     </div>
-                    <div class="btn-wrapper text-center">
+                     <div class="btn-wrapper text-center">
                         <a href="#" class="btn btn-neutral btn-icon">
                             <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
                             <span class="btn-inner--text">Github</span>
@@ -15,17 +16,17 @@
                             <span class="btn-inner--icon"><img src="img/icons/common/google.svg"></span>
                             <span class="btn-inner--text">Google</span>
                         </a>
-                    </div>
-                </div>
+                    </div> 
+                </div> -->
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
-                        <small>Or sign up with credentials</small>
+                        Sign Up
                     </div>
                     <form role="form">
 
                         <base-input class="input-group-alternative mb-3"
                                     placeholder="Name"
-                                    addon-left-icon="ni ni-hat-3"
+                                    addon-left-icon="ni ni-circle-08"
                                     v-model="model.name">
                         </base-input>
 
@@ -41,10 +42,26 @@
                                     addon-left-icon="ni ni-lock-circle-open"
                                     v-model="model.password">
                         </base-input>
-
-                        <div class="text-muted font-italic">
-                            <small>password strength: <span class="text-success font-weight-700">strong</span></small>
-                        </div>
+                        <base-input class="input-group-alternative"
+                                    placeholder="Desgination"
+                                    addon-left-icon="ni ni-hat-3"
+                                    v-model="model.designation">
+                        </base-input>
+                        <base-input class="input-group-alternative"
+                                    placeholder="Department"
+                                    addon-left-icon="ni ni-single-copy-04"
+                                    v-model="model.department">
+                        </base-input>
+                        <base-input class="input-group-alternative"
+                                    placeholder="Office Address"
+                                    addon-left-icon="ni ni-laptop"
+                                    v-model="model.officeAddress">
+                        </base-input>
+                        <base-input class="input-group-alternative"
+                                    placeholder="Office Timings"
+                                    addon-left-icon="ni ni-watch-time"
+                                    v-model="model.officeTimings">
+                        </base-input>
 
                         <div class="row my-4">
                             <div class="col-12">
@@ -54,7 +71,11 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <base-button type="primary" class="my-4">Create account</base-button>
+                            <base-button type="primary" class="my-4">
+                                <router-link class="nav-link nav-link-icon" to="/dashboard" style="color:white">
+                                    Sign Up
+                                </router-link>
+                            </base-button>
                         </div>
                     </form>
                 </div>
@@ -82,7 +103,11 @@
         model: {
           name: '',
           email: '',
-          password: ''
+          password: '',
+          designation: '',
+          department: '',
+          officeAddress: '',
+          officeTimings: ''
         }
       }
     }
