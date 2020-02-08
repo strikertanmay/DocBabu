@@ -2,7 +2,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
-                    <div class="card-header bg-transparent pb-5">
+                    <!-- <div class="card-header bg-transparent pb-5">
                         <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
                         <div class="btn-wrapper text-center">
                             <a href="#" class="btn btn-neutral btn-icon">
@@ -14,10 +14,10 @@
                                 <span class="btn-inner--text">Google</span>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                            <small>Or sign in with credentials</small>
+                            Sign In
                         </div>
                         <form role="form">
                             <base-input class="input-group-alternative mb-3"
@@ -37,7 +37,11 @@
                                 <span class="text-muted">Remember me</span>
                             </base-checkbox>
                             <div class="text-center">
-                                <base-button type="primary" class="my-4">Sign in</base-button>
+                                <base-button type="primary" class="my-4">
+                                    <router-link class="nav-link nav-link-icon" to="/dashboard" style="color:white">
+                                        Sign In
+                                    </router-link>
+                                </base-button>
                             </div>
                         </form>
                     </div>
@@ -67,4 +71,5 @@
   }
 </script>
 <style>
+
 </style>

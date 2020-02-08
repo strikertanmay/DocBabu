@@ -18,7 +18,6 @@
                                   @click.native.stop="toggled = !toggled">
                 <span class="navbar-toggler-icon"></span>
             </navbar-toggle-button>
-
             <div class="collapse navbar-collapse"
                  :class="{show: toggled}"
                  :id="contentId"
