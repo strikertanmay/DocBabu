@@ -1,8 +1,6 @@
 package utils
 
 import (
-	"log"
-
 	. "github.com/jigar3/docBabu/models"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -16,7 +14,7 @@ func FindAllDocuments() ([]Document, error) {
 	err := db.C(DOCUMENT_COLLECTION).Find(bson.M{}).All(&documents)
 
 	if err != nil {
-		log.Fatal(err)
+		return []Document{}, err
 	}
 
 	return documents, err
@@ -27,7 +25,7 @@ func FindDocumentByID(id string) (Document, error) {
 	err := db.C(DOCUMENT_COLLECTION).FindId(bson.ObjectIdHex(id)).One(&document)
 
 	if err != nil {
-		log.Fatal(err)
+		return Document{}, err
 	}
 
 	return document, err
@@ -37,7 +35,7 @@ func InsertDocument(doc Document) error {
 	err := db.C(DOCUMENT_COLLECTION).Insert(&doc)
 
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	return err
@@ -47,7 +45,7 @@ func UpdateDocument(doc Document) error {
 	err := db.C(DOCUMENT_COLLECTION).UpdateId(doc.ID, &doc)
 
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	return err
