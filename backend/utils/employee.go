@@ -11,7 +11,7 @@ var (
 	EMPLOYEE_COLLECTION = "employees"
 )
 
-func (m *Server) FindAllEmployees() ([]Employee, error) {
+func FindAllEmployees() ([]Employee, error) {
 	var employees []Employee
 	err := db.C(EMPLOYEE_COLLECTION).Find(bson.M{}).All(&employees)
 
@@ -23,7 +23,7 @@ func (m *Server) FindAllEmployees() ([]Employee, error) {
 
 }
 
-func (m *Server) FindEmployeeByID(id string) (Employee, error) {
+func FindEmployeeByID(id string) (Employee, error) {
 	var employee Employee
 	err := db.C(EMPLOYEE_COLLECTION).FindId(bson.ObjectIdHex(id)).One(&employee)
 
@@ -34,7 +34,7 @@ func (m *Server) FindEmployeeByID(id string) (Employee, error) {
 	return employee, err
 }
 
-func (m *Server) InsertEmployee(employee Employee) error {
+func InsertEmployee(employee Employee) error {
 	err := db.C(EMPLOYEE_COLLECTION).Insert(&employee)
 
 	if err != nil {
@@ -44,7 +44,7 @@ func (m *Server) InsertEmployee(employee Employee) error {
 	return err
 }
 
-func (m *Server) DeleteEmployee(employee Employee) error {
+func DeleteEmployee(employee Employee) error {
 	err := db.C(EMPLOYEE_COLLECTION).Remove(&employee)
 
 	if err != nil {
@@ -54,7 +54,7 @@ func (m *Server) DeleteEmployee(employee Employee) error {
 	return err
 }
 
-func (m *Server) UpdateEmployee(employee Employee) error {
+func UpdateEmployee(employee Employee) error {
 	err := db.C(EMPLOYEE_COLLECTION).UpdateId(employee.ID, &employee)
 
 	if err != nil {
