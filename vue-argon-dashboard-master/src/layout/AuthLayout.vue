@@ -30,12 +30,12 @@
                 </div>
                 <!-- Navbar items -->
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <router-link class="nav-link nav-link-icon" to="/">
+                    <!-- <li class="nav-item">
+                        <router-link class="nav-link nav-link-icon" to="/dashboard">
                             <i class="ni ni-planet"></i>
                             <span class="nav-link-inner--text">Dashboard</span>
                         </router-link>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <router-link class="nav-link nav-link-icon" to="/register">
                             <i class="ni ni-circle-08"></i>
@@ -48,12 +48,12 @@
                             <span class="nav-link-inner--text">Login</span>
                         </router-link>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <router-link class="nav-link nav-link-icon" to="/profile">
                             <i class="ni ni-single-02"></i>
                             <span class="nav-link-inner--text">Profile</span>
                         </router-link>
-                    </li>
+                    </li> -->
                 </ul>
             </template>
         </base-nav>
@@ -63,9 +63,8 @@
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6">
-                            <h1 class="text-white">Welcome!</h1>
-                            <p class="text-lead text-white">Use these awesome forms to login or create new account in
-                                your project for free.</p>
+                            <h1 class="text-white"></h1>
+                            <p class="text-lead text-white"></p>
                         </div>
                     </div>
                 </div>
@@ -78,12 +77,12 @@
             </div>
         </div>
         <!-- Page content -->
-        <div class="container mt--8 pb-5">
+        <div class="container mt--8 pb-5-new">
             <slide-y-up-transition mode="out-in" origin="center top">
                 <router-view></router-view>
             </slide-y-up-transition>
         </div>
-        <footer class="py-5">
+        <!-- <footer class="py-5">
             <div class="container">
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
@@ -112,7 +111,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> -->
     </div>
 </template>
 <script>
@@ -132,4 +131,7 @@
   }
 </script>
 <style>
+    .pb-5-new {
+        padding-bottom: 19.75rem;
+    }
 </style>
