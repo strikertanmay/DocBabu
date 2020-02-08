@@ -15,8 +15,8 @@ type Server struct {
 
 var db *mgo.Database
 
-const (
-	COLLECTION = "employees"
+var (
+	EMPLOYEE_COLLECTION = "employees"
 )
 
 func (m *Server) Connect() {
@@ -30,7 +30,7 @@ func (m *Server) Connect() {
 
 func (m *Server) FindAll() ([]Employee, error) {
 	var employees []Employee
-	err := db.C(COLLECTION).Find(bson.M{}).All(&employees)
+	err := db.C(EMPLOYEE_COLLECTION).Find(bson.M{}).All(&employees)
 
 	if err != nil {
 		log.Fatal(err)
