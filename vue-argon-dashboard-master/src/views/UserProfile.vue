@@ -1,15 +1,15 @@
 <template>
     <div>
         <base-header class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-                     style="min-height: 600px; background-image: url(img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+                     style="min-height: 600px; background-size: cover; background-position: center top;">
             <!-- Mask -->
             <span class="mask bg-gradient-success opacity-8"></span>
             <!-- Header container -->
             <div class="container-fluid d-flex align-items-center">
                 <div class="row">
                     <div class="col-lg-7 col-md-10">
-                        <h1 class="display-2 text-white">Hello Jesse</h1>
-                        <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+                        <h1 class="display-2 text-white">Create A Track</h1>
+                        <p class="text-white mt-0 mb-5">Create a track for the processing of a new file</p>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                         <div slot="header" class="bg-white border-0">
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h3 class="mb-0">My account</h3>
+                                    <h3 class="mb-0">New Track</h3>
                                 </div>
                                 <!-- <div class="col-4 text-right">
                                     <a href="#!" class="btn btn-sm btn-primary">Settings</a>
@@ -31,93 +31,67 @@
                         </div>
                         <template>
                             <form @submit.prevent>
-                                <h6 class="heading-small text-muted mb-4">User information</h6>
+                                <h6 class="heading-small text-muted mb-4">File Information</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-md-12">
                                             <base-input alternative=""
-                                                        label="Username"
-                                                        placeholder="Username"
+                                                        label="File ID"
+                                                        placeholder="enter file id"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.username"
-                                            />
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <base-input alternative=""
-                                                        label="Email address"
-                                                        placeholder="jesse@example.com"
-                                                        input-classes="form-control-alternative"
-                                                        v-model="model.email"
+                                                        v-model="model.id"
                                             />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <base-input alternative=""
-                                                        label="First name"
-                                                        placeholder="First name"
+                                                        label="Created By"
+                                                        placeholder="employee name"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.firstName"
+                                                        v-model="model.creatorName"
                                             />
                                         </div>
                                         <div class="col-lg-6">
                                             <base-input alternative=""
-                                                        label="Last name"
-                                                        placeholder="Last name"
+                                                        label="Creation time"
+                                                        placeholder="time for creation of track"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.lastName"
+                                                        v-model="model.createTime"
                                             />
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="my-4" />
                                 <!-- Address -->
-                                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                                <h6 class="heading-small text-muted mb-4">Track Information</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-lg-6">
                                             <base-input alternative=""
-                                                        label="Address"
-                                                        placeholder="Home Address"
+                                                        label="Name"
+                                                        placeholder="name"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.address"
+                                                        v-model="model.path.name"
                                             />
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <base-input alternative=""
-                                                        label="City"
-                                                        placeholder="City"
+                                                        label="Priority"
+                                                        placeholder="priority of the stage"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.city"
-                                            />
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <base-input alternative=""
-                                                        label="Country"
-                                                        placeholder="Country"
-                                                        input-classes="form-control-alternative"
-                                                        v-model="model.country"
-                                            />
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <base-input alternative=""
-                                                        label="Postal code"
-                                                        placeholder="Postal code"
-                                                        input-classes="form-control-alternative"
-                                                        v-model="model.zipCode"
+                                                        v-model="model.path.priority"
                                             />
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="my-4" />
                                 <!-- Description -->
-                                <h6 class="heading-small text-muted mb-4">About me</h6>
+                                <h6 class="heading-small text-muted mb-4">Additional Information</h6>
                                 <div class="pl-lg-4">
                                     <div class="form-group">
                                         <base-input alternative=""
-                                                    label="About Me">
+                                                    label="Remarks">
                                             <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
                                         </base-input>
                                     </div>
@@ -136,15 +110,13 @@
     data() {
       return {
         model: {
-          username: '',
-          email: '',
-          firstName: '',
-          lastName: '',
-          address: '',
-          city: '',
-          country: '',
-          zipCode: '',
-          about: '',
+          id: '',
+          creatorName: '',
+          createTime: '',
+          path: [{
+              name: '',
+              Priority: ''
+          }]
         }
       }
     },
