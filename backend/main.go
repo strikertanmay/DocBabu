@@ -29,6 +29,8 @@ func main() {
 
 	r.HandleFunc("/document", CreateDocument).Methods("POST")
 	r.HandleFunc("/document/all", GetAllDocuments).Methods("GET")
+	r.HandleFunc("/document/{name}", GetDocumentByName).Methods("GET")
+	r.HandleFunc("/document/{id}", EditDocument).Methods("GET")
 
 	if err := http.ListenAndServe(":3000", r); err != nil {
 		log.Fatal(err)

@@ -31,6 +31,17 @@ func FindDocumentByID(id string) (Document, error) {
 	return document, err
 }
 
+func FindDocumentByName(name string) (Document, error) {
+	var document Document
+	err := db.C(DOCUMENT_COLLECTION).Find(bson.M{"filename": name}).One(&document)
+
+	if err != nil {
+		return Document{}, err
+	}
+
+	return document, err
+}
+
 func InsertDocument(doc Document) error {
 	err := db.C(DOCUMENT_COLLECTION).Insert(&doc)
 
