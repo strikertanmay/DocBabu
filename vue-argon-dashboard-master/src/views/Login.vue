@@ -55,8 +55,8 @@
         </div>
 </template>
 <script>
-import api from '@/api';
-import BaseAlertVue from '../components/BaseAlert.vue';
+import EmployeeDataService from '@/service';
+// import BaseAlertVue from '../components/BaseAlert.vue';
   export default {
     name: 'login',
     data() {
@@ -65,31 +65,21 @@ import BaseAlertVue from '../components/BaseAlert.vue';
           name: '',
           password: ''
         },
-        user : {},
         temp : {},
         show: true
       }
     },
-
     methods : {
-        async getUser(){
-           api.getEmployee(this.model).then( 
-               (user => {
-                   this.$set(this, "user", user);
-               }).bind(this)
-           );
-        },
         handleSubmit(){
-            // this.getUser()
-            // if(this.user.name!==this.model.name)
-            // {
-            //     alert("No such user")
-            // }
-            // else
-            // {
-            //     this.$router.push('/dashboard')
-            // }
-            this.$router.push('/dashboard')
+            EmployeeDataService.getEmployee(this.model.name).then
+               (user => {
+                   localStorage.id=user.data.id;
+                   localStorage.name=user.data.name;
+               })
+               .catch(e =>  {
+                   console.log(e)
+               });
+                this.$router.push('/dashboard');
         }
     }
   }
