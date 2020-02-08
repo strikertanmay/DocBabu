@@ -80,7 +80,11 @@
             </div>
           </td>
           <td>
-             <base-button type="primary" size="sm">Update</base-button>
+             <base-button type="primary" size="sm">
+              <router-link class="nav-link nav-link-icon" to="/update" style="color:white">
+                Update
+              </router-link>
+            </base-button>
           </td>
 
         

@@ -43,9 +43,9 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/Icons.vue')
         },
         {
-          path: '/profile',
-          name: 'profile',
-          component: () => import(/* webpackChunkName: "demo" */ './views/UserProfile.vue')
+          path: '/addtrack',
+          name: 'addtrack',
+          component: () => import(/* webpackChunkName: "demo" */ './views/AddTrack.vue')
         },
         {
           path: '/maps',
@@ -56,6 +56,11 @@ export default new Router({
           path: '/tables',
           name: 'tables',
           component: () => import(/* webpackChunkName: "demo" */ './views/Tables.vue')
+        },
+        {
+          path: '/update',
+          name: 'update',
+          component: () => import(/* webpackChunkName: "demo" */ './views/Update.vue')
         }
       ]
     },
