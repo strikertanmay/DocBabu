@@ -73,24 +73,16 @@ import EmployeeDataService from '@/service';
 
     methods : {
         handleSubmit(){
-            EmployeeDataService.getEmployee(this.model.name).then( 
+            EmployeeDataService.getEmployee(this.model.name).then
                (user => {
                    console.log(user);
-                   this.user = user
+                   this.user = user;
                })
                .catch(e =>  {
                    console.log(e)
-               })
-           );
-            // if(this.user.name!==this.model.name)
-            // {
-            //     alert("No such user")
-            // }
-            // else
-            // {
-            //     this.$router.push('/dashboard')
-            // }
-            // this.$router.push('/dashboard')
+               });
+
+                this.$router.push('/dashboard')
         }
     }
   }
