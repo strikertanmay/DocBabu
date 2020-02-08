@@ -11,7 +11,7 @@ var (
 	DOCUMENT_COLLECTION = "documents"
 )
 
-func (m *Server) FindAllDocuments() ([]Document, error) {
+func FindAllDocuments() ([]Document, error) {
 	var documents []Document
 	err := db.C(DOCUMENT_COLLECTION).Find(bson.M{}).All(&documents)
 
@@ -22,7 +22,7 @@ func (m *Server) FindAllDocuments() ([]Document, error) {
 	return documents, err
 }
 
-func (m *Server) FindDocumentByID(id string) (Document, error) {
+func FindDocumentByID(id string) (Document, error) {
 	var document Document
 	err := db.C(DOCUMENT_COLLECTION).FindId(bson.ObjectIdHex(id)).One(&document)
 
@@ -33,7 +33,7 @@ func (m *Server) FindDocumentByID(id string) (Document, error) {
 	return document, err
 }
 
-func (m *Server) InsertDocument(doc Document) error {
+func InsertDocument(doc Document) error {
 	err := db.C(DOCUMENT_COLLECTION).Insert(&doc)
 
 	if err != nil {
@@ -43,7 +43,7 @@ func (m *Server) InsertDocument(doc Document) error {
 	return err
 }
 
-func (m *Server) UpdateDocument(doc Document) error {
+func UpdateDocument(doc Document) error {
 	err := db.C(DOCUMENT_COLLECTION).UpdateId(doc.ID, &doc)
 
 	if err != nil {

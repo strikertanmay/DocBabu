@@ -26,13 +26,13 @@ func (m *Server) Connect() {
 	db = session.DB(m.Database)
 }
 
-func (m *Server) RespondWithJson(w http.ResponseWriter, code int, payload interface{}) {
+func RespondWithJson(w http.ResponseWriter, code int, payload interface{}) {
 	response, _ := json.Marshal(payload)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
 	w.Write(response)
 }
 
-func (m *Server) RespondWithError(w http.ResponseWriter, code int, msg string) {
-	server.RespondWithJson(w, code, map[string]string{"error": msg})
+func RespondWithError(w http.ResponseWriter, code int, msg string) {
+	RespondWithJson(w, code, map[string]string{"error": msg})
 }
