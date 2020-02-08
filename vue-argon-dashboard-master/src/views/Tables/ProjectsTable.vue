@@ -22,11 +22,12 @@
                   tbody-classes="list"
                   :data="tableData">
         <template slot="columns">
-          <th>Project</th>
-          <th>Budget</th>
+          <th>File Identifier</th>
+          <th>Recieved From</th>
+          <th>Send To</th>
           <th>Status</th>
-          <th>Users</th>
-          <th>Completion</th>
+          <th>Last Modified</th>
+          <th>Action</th>
           <th></th>
         </template>
 
@@ -44,12 +45,7 @@
           <td class="budget">
             {{row.budget}}
           </td>
-          <td>
-            <badge class="badge-dot mr-4" :type="row.statusType">
-              <i :class="`bg-${row.statusType}`"></i>
-              <span class="status">{{row.status}}</span>
-            </badge>
-          </td>
+        
           <td>
             <div class="avatar-group">
               <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
@@ -66,7 +62,12 @@
               </a>
             </div>
           </td>
-
+            <td>
+            <badge class="badge-dot mr-4" :type="row.statusType">
+              <i :class="`bg-${row.statusType}`"></i>
+              <span class="status">{{row.status}}</span>
+            </badge>
+          </td>
           <td>
             <div class="d-flex align-items-center">
               <span class="completion mr-2">{{row.completion}}%</span>
@@ -78,21 +79,11 @@
               </div>
             </div>
           </td>
-
-          <td class="text-right">
-            <base-dropdown class="dropdown"
-                           position="right">
-              <a slot="title" class="btn btn-sm btn-icon-only text-light" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-ellipsis-v"></i>
-              </a>
-
-              <template>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </template>
-            </base-dropdown>
+          <td>
+             <base-button type="primary" size="sm">Update</base-button>
           </td>
+
+        
 
         </template>
 
