@@ -55,7 +55,7 @@
                         label="Created By"
                         placeholder="employee name"
                         input-classes="form-control-alternative"
-                        v-model="model.creatorId"
+                        v-model="model.creatorName"
                       />
                     </div>
                   </div>
@@ -89,7 +89,7 @@
                         label="Remark"
                         placeholder="remark"
                         input-classes="form-control-alternative"
-                        v-model="model.path[k].remark"
+                        v-model="model.path[k].comment"
                       />
                     </div>
                     <span>
@@ -137,12 +137,12 @@ export default {
     return {
       model: {
         id: "",
-        creatorId: "",
+        creatorName: "",
         path: [
           {
             name: "",
             priority: "",
-            remark: ""
+            comment: ""
           }
         ],
         remarks: ""
@@ -152,18 +152,18 @@ export default {
   mounted() {
     if(localStorage.id)
     {
-      this.model.creatorId = localStorage.id
+      this.model.creatorName = localStorage.userName
     }
   },
   methods: {
     add() {
-      this.model.path.push({ name: "", priority: "", remark: ""});
+      this.model.path.push({ name: "", priority: "", comment: ""});
     },
         
     handleSubmit(){
             var data = {
             filename : this.model.id,
-            creator_id : this.model.creatorId,
+            creator_name : this.model.creatorName,
             associations : this.model.path,
             remarks : this.model.remarks
         };
