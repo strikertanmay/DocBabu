@@ -30,6 +30,5 @@ func main() {
 }
 
 func abc(w http.ResponseWriter, r *http.Request) {
-	// server.
-	// server.RespondWithJson(w, http.StatusOK, map[string]string{"result": "success"})
+	server.RespondWithJson(w, http.StatusOK, map[string]string{"result": "success"})
 }
