@@ -2,6 +2,7 @@ package utils
 
 import (
 	"encoding/json"
+	"image"
 	"image/png"
 	"log"
 	"net/http"
@@ -10,6 +11,7 @@ import (
 
 	"github.com/boombuler/barcode"
 	"github.com/boombuler/barcode/qr"
+	"github.com/clsung/grcode"
 	mgo "gopkg.in/mgo.v2"
 )
 
@@ -52,4 +54,17 @@ func CreateQR(id string) string {
 
 	png.Encode(file, qrCode)
 	return file.Name()
+}
+
+func DecodeQR(image image.Image) []string {
+
+	results, err := grcode.GetDataFromImage(image)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if len(results) == 0 {
+		log.Printf("No qrcode detected from file")
+	}
+
+	return results
 }

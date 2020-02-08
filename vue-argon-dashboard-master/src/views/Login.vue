@@ -74,13 +74,12 @@ import EmployeeDataService from '@/service';
             EmployeeDataService.getEmployee(this.model.name).then
                (user => {
                    localStorage.id=user.data.id;
-                   localStorage.userName = user.data.name;
+                   localStorage.name=user.data.name;
                })
                .catch(e =>  {
                    console.log(e)
                });
-                this.$router.push('/dashboard')
-                
+                this.$router.push('/dashboard');
         }
     }
   }
