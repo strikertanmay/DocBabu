@@ -8,7 +8,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
-type EmployeeUtil struct {
+type Server struct {
 	Server   string
 	Database string
 }
@@ -19,7 +19,7 @@ const (
 	COLLECTION = "employees"
 )
 
-func (m *EmployeeUtil) Connect() {
+func (m *Server) Connect() {
 	session, err := mgo.Dial(m.Server)
 	if err != nil {
 		log.Fatal(err)
@@ -28,7 +28,7 @@ func (m *EmployeeUtil) Connect() {
 	db = session.DB(m.Database)
 }
 
-func (m *EmployeeUtil) FindAll() ([]Employee, error) {
+func (m *Server) FindAll() ([]Employee, error) {
 	var employees []Employee
 	err := db.C(COLLECTION).Find(bson.M{}).All(&employees)
 
