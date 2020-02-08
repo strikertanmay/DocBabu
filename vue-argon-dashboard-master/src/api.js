@@ -11,7 +11,7 @@ const client = axios.create({
             method,
             url: resource,
             data,
-            headers: {}
+            headers: {"Content-type": "application/json"}
         }).then((req) => {
             return req.data;
         }).catch((err) => {
