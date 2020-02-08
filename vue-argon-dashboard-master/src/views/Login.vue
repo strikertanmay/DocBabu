@@ -58,6 +58,7 @@
         </div>
 </template>
 <script>
+import api from '@/api';
   export default {
     name: 'login',
     data() {
@@ -65,8 +66,19 @@
         model: {
           email: '',
           password: ''
-        }
+        },
+        user : {}
       }
+    },
+
+    methods : {
+        async getUser(){
+           api.getEmployee(this.model).then( 
+               (user => {
+                   this.$set(this, "user", user);
+               }).bind(this)
+           );
+        }
     }
   }
 </script>
