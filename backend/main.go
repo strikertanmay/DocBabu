@@ -23,7 +23,8 @@ func init() {
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/movies", Abc).Methods("GET")
+	r.HandleFunc("/employee", CreateEmployee).Methods("POST")
+	r.HandleFunc("/employee/all", GetAllEmployees).Methods("GET")
 
 	if err := http.ListenAndServe(":3000", r); err != nil {
 		log.Fatal(err)
