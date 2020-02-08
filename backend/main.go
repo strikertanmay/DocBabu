@@ -25,6 +25,10 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/employee", CreateEmployee).Methods("POST")
 	r.HandleFunc("/employee/all", GetAllEmployees).Methods("GET")
+	r.HandleFunc("/employee/{name}", GetEmployeeByName).Methods("GET")
+
+	r.HandleFunc("/document", CreateDocument).Methods("POST")
+	r.HandleFunc("/document/all", GetAllDocuments).Methods("GET")
 
 	if err := http.ListenAndServe(":3000", r); err != nil {
 		log.Fatal(err)

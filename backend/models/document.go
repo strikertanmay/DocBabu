@@ -10,7 +10,7 @@ type Document struct {
 	CreatedAt        time.Time      `bson:"created_at" json:"created_at"`
 	Associations     []PersonDetail `bson:"associations" json:"associations"`
 	FinalDestination string         `bson:"final_destination" json:"final_destination"`
-	Priority         string         `bson:"priority" json:"priority"`
+	Priority         int            `bson:"priority" json:"priority"`
 	NextEmployees    []Employee     `bson:"next_employees" json:"next_employees"`
 	Remarks          string         `bson:"remarks" json:"remarks"`
 	Completed        bool           `bson:"completed" json:"completed"`
