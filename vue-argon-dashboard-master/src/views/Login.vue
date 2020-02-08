@@ -65,7 +65,6 @@ import EmployeeDataService from '@/service';
           name: '',
           password: ''
         },
-        userId : " ",
         temp : {},
         show: true
       }
@@ -74,14 +73,12 @@ import EmployeeDataService from '@/service';
         handleSubmit(){
             EmployeeDataService.getEmployee(this.model.name).then
                (user => {
-                   console.log(user.id);
-                   localStorage.id=user.id;
-                   this.user = user
+                   localStorage.id=user.data.id;
+                   localStorage.userName = user.data.name;
                })
                .catch(e =>  {
                    console.log(e)
                });
-                console.log(this.userId)
                 this.$router.push('/dashboard')
                 
         }

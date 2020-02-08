@@ -163,7 +163,7 @@ export default {
     handleSubmit(){
             var data = {
             filename : this.model.id,
-            creatorId : this.model.creatorId,
+            creator_id : this.model.creatorId,
             associations : this.model.path,
             remarks : this.model.remarks
         };
