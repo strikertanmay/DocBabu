@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"image"
 	"image/png"
 	"log"
 	"os"
@@ -24,18 +25,18 @@ func run() {
 
 	// encode the barcode as png
 	png.Encode(file, qrCode)
-	decodeQR("qrcode1.png")
+	// decodeQR("qrcode1.png")
 }
 
 //go build -ldflags "-linkmode external -extldflags -static"
-func decodeQR(filePath string) {
+func decodeQR(image image.Image) {
 
-	results, err := grcode.GetDataFromFile(filePath)
+	results, err := grcode.GetDataFromImage(image)
 	if err != nil {
 		log.Fatal(err)
 	}
 	if len(results) == 0 {
-		log.Printf("No qrcode detected from file: %s", filePath)
+		log.Printf("No qrcode detected from file")
 	}
 	for _, result := range results {
 		fmt.Printf("%s\n", result)

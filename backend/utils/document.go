@@ -22,7 +22,7 @@ func FindAllDocuments() ([]Document, error) {
 
 func FindDocumentByID(id string) (Document, error) {
 	var document Document
-	err := db.C(DOCUMENT_COLLECTION).FindId(bson.ObjectIdHex(id)).One(&document)
+	err := db.C(DOCUMENT_COLLECTION).Find(bson.M{"_id": id}).One(&document)
 
 	if err != nil {
 		return Document{}, err

@@ -16,6 +16,7 @@ type Document struct {
 	Remarks          string         `bson:"remarks" json:"remarks"`
 	Completed        bool           `bson:"completed" json:"completed"`
 	Error            bool           `bson:"error" json:"error"`
+	CurrentlyWith    Employee       `bson:"currently_with" json:"currently_with"`
 }
 
 type PersonDetail struct {
