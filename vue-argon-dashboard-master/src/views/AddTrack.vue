@@ -66,7 +66,7 @@
                                 <!-- Address -->
                                 <h6 class="heading-small text-muted mb-4">Track Information</h6>
                                 <div class="pl-lg-4">
-                                    <div class="row">
+                                    <div class="row" v-for="(input,k) in model.path" :key="k">
                                         <div class="col-lg-6">
                                             <base-input alternative=""
                                                         label="Name"
@@ -75,7 +75,7 @@
                                                         v-model="model.path.name"
                                             />
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-5">
                                             <base-input alternative=""
                                                         label="Priority"
                                                         placeholder="priority of the stage"
@@ -83,6 +83,9 @@
                                                         v-model="model.path.priority"
                                             />
                                         </div>
+                                        <span>
+                                            <i class="fas fa-plus-circle" @click="add(k)" v-show="k == model.path.length-1"></i>
+                                        </span>
                                     </div>
                                 </div>
                                 <hr class="my-4" />
@@ -115,11 +118,16 @@
           createTime: '',
           path: [{
               name: '',
-              Priority: ''
+              priority: ''
           }]
         }
       }
     },
+    methods: {
+        add(index) {
+             this.model.path.push({ name: '', priority: '' })
+           },
+    } 
   };
 </script>
 <style></style>

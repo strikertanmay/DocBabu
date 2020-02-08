@@ -21,9 +21,8 @@
                         </div>
                         <form role="form">
                             <base-input class="input-group-alternative mb-3"
-                                        placeholder="Email"
-                                        addon-left-icon="ni ni-email-83"
-                                        v-model="model.email">
+                                        placeholder="Name"
+                                        v-model="model.name">
                             </base-input>
 
                             <base-input class="input-group-alternative"
@@ -37,10 +36,8 @@
                                 <span class="text-muted">Remember me</span>
                             </base-checkbox>
                             <div class="text-center">
-                                <base-button type="primary" class="my-4">
-                                    <router-link class="nav-link nav-link-icon" to="/dashboard" style="color:white">
-                                        Sign In
-                                    </router-link>
+                                <base-button type="primary" class="my-4" @click="handleSubmit">
+                                    Sign In
                                 </base-button>
                             </div>
                         </form>
@@ -59,15 +56,18 @@
 </template>
 <script>
 import api from '@/api';
+import BaseAlertVue from '../components/BaseAlert.vue';
   export default {
     name: 'login',
     data() {
       return {
         model: {
-          email: '',
+          name: '',
           password: ''
         },
-        user : {}
+        user : {},
+        temp : {},
+        show: true
       }
     },
 
@@ -78,6 +78,18 @@ import api from '@/api';
                    this.$set(this, "user", user);
                }).bind(this)
            );
+        },
+        handleSubmit(){
+            // this.getUser()
+            // if(this.user.name!==this.model.name)
+            // {
+            //     alert("No such user")
+            // }
+            // else
+            // {
+            //     this.$router.push('/dashboard')
+            // }
+            this.$router.push('/dashboard')
         }
     }
   }
