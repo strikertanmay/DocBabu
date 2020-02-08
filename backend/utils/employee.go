@@ -40,7 +40,7 @@ func (m *Server) FindAllEmployees() ([]Employee, error) {
 
 }
 
-func (m *Server) FindEmployeeById(id string) (Employee, error) {
+func (m *Server) FindEmployeeByID(id string) (Employee, error) {
 	var employee Employee
 	err := db.C(EMPLOYEE_COLLECTION).FindId(bson.ObjectIdHex(id)).One(&employee)
 
