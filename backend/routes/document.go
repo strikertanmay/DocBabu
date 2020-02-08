@@ -3,10 +3,13 @@ package routes
 import (
 	"encoding/json"
 	"net/http"
+	"sort"
 	"time"
 
+	"github.com/gorilla/mux"
 	. "github.com/jigar3/docBabu/models"
 	. "github.com/jigar3/docBabu/utils"
+	"github.com/thoas/go-funk"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -22,7 +25,6 @@ type Association struct {
 	Remarks  string `bson:"remarks" json:"remarks"`
 }
 
-// Name of File, ID of Person Creating, remarks, {name: "", priority: "", remarks: ""} List
 func CreateDocument(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	var request_body CreateRequest
@@ -44,15 +46,34 @@ func CreateDocument(w http.ResponseWriter, r *http.Request) {
 		personAssociated = append(personAssociated, temp)
 	}
 
+	sort.Slice(personAssociated, func(i, j int) bool {
+		return personAssociated[i].Priority < personAssociated[j].Priority
+	})
+
+	result := funk.Filter(personAssociated, func(p PersonDetail) bool {
+		return p.SignaturePending == true
+	})
+
+	x := result.([]PersonDetail)
+
+	min_priority := x[0].Priority
+
+	result = funk.Filter(result, func(x PersonDetail) bool {
+		return x.Priority == min_priority
+	})
+
+	y := result.([]PersonDetail)
+
 	document_id := bson.NewObjectId()
 	var document = Document{
 		ID:               document_id,
+		FileName:         request_body.FileName,
 		CreatedBy:        created_by,
 		CreatedAt:        time.Now(),
 		Associations:     personAssociated,
 		FinalDestination: created_by.Name,
 		Priority:         0,
-		NextEmployees:    []Employee{},
+		NextEmployees:    y,
 		Remarks:          request_body.Remarks,
 		Completed:        false,
 		Error:            false,
@@ -75,4 +96,18 @@ func GetAllDocuments(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	RespondWithJson(w, http.StatusOK, documents)
+}
+
+func GetDocumentByName(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	documents, err := FindDocumentByName(params["name"])
+	if err != nil {
+		RespondWithError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	RespondWithJson(w, http.StatusOK, documents)
+}
+
+func EditDocument(w http.ResponseWriter, r *http.Request) {
+	// params := mux.Vars(r)
 }
