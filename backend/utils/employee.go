@@ -51,7 +51,7 @@ func (m *Server) FindEmployeeById(id string) (Employee, error) {
 	return employee, err
 }
 
-func (m *Server) Insert(employee Employee) error {
+func (m *Server) InsertEmployee(employee Employee) error {
 	err := db.C(EMPLOYEE_COLLECTION).Insert(&employee)
 
 	if err != nil {
@@ -61,7 +61,7 @@ func (m *Server) Insert(employee Employee) error {
 	return err
 }
 
-func (m *Server) Delete(employee Employee) error {
+func (m *Server) DeleteEmployee(employee Employee) error {
 	err := db.C(EMPLOYEE_COLLECTION).Remove(&employee)
 
 	if err != nil {
@@ -71,12 +71,12 @@ func (m *Server) Delete(employee Employee) error {
 	return err
 }
 
-func (m *Server) Update(employee Employee) error {
+func (m *Server) UpdateEmployee(employee Employee) error {
 	err := db.C(EMPLOYEE_COLLECTION).UpdateId(employee.ID, &employee)
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	return err
 }
