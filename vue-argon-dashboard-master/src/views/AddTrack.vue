@@ -41,8 +41,8 @@
                     <div class="col-md-12">
                       <base-input
                         alternative
-                        label="File ID"
-                        placeholder="enter file id"
+                        label="File Name"
+                        placeholder="enter file name"
                         input-classes="form-control-alternative"
                         v-model="model.id"
                       />
@@ -114,12 +114,15 @@
                         rows="4"
                         class="form-control form-control-alternative"
                         placeholder="A few words about you ..."
-                      >A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                      >Add some remarks over here.</textarea>
                     </base-input>
                   </div>
                 </div>
+
+                <div class="row">
                 <div class="pl-lg-4">
                   <base-button type="primary" class="my-4" @click="handleSubmit">Submit</base-button>
+                </div>
                 </div>
               </form>
             </template>
@@ -152,7 +155,7 @@ export default {
   mounted() {
     if(localStorage.id)
     {
-      this.model.creatorName = localStorage.userName
+      this.model.creatorName = localStorage.name
     }
   },
   methods: {
@@ -170,7 +173,8 @@ export default {
         console.log(data);  
         EmployeeDataService.postDocument(data).then(
             res => {
-                console.log(res);
+                console.log(res.data);
+                saveAs(blob, 'image_name.jpg');
             }
         ).catch(e => {
             console.log(e)

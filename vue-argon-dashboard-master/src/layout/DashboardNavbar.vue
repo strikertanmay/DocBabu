@@ -19,9 +19,9 @@
                 <!-- <span class="avatar avatar-sm rounded-circle">
                   <img alt="Image placeholder" src="img/theme/team-4-800x800.jpg">
                 </span> -->
-                        <div class="media-body ml-2 d-none d-lg-block">
+                        <!-- <div class="media-body ml-2 d-none d-lg-block">
                             <span class="mb-0 text-sm  font-weight-bold">{{username}}</span>
-                        </div>
+                        </div> -->
                     </div>
 
                     <template>
@@ -67,7 +67,7 @@
     },
     mounted() {
       this.username=localStorage.name
-      console.log(this.username)
+      // console.log(this.username)
     },
     methods: {
       toggleSidebar() {
