@@ -176,3 +176,24 @@ func EditDocument(w http.ResponseWriter, r *http.Request) {
 
 	RespondWithJson(w, http.StatusOK, document)
 }
+
+func GetDocumentsOfEmployee(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	documents, _ := FindAllDocuments()
+
+	var related_documents []Document
+
+	for _, data := range documents {
+		if data.CreatedBy.Name == params["user_name"] {
+			related_documents = append(related_documents, data)
+		} else {
+			for _, d := range data.Associations {
+				if d.Person.Name == params["user_name"] {
+					related_documents = append(related_documents, data)
+				}
+			}
+		}
+	}
+
+	RespondWithJson(w, http.StatusOK, related_documents)
+}

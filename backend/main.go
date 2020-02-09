@@ -36,6 +36,7 @@ func main() {
 	r.HandleFunc("/document/all", GetAllDocuments).Methods("GET")
 	r.HandleFunc("/document/{name}", GetDocumentByName).Methods("GET")
 	r.HandleFunc("/document/edit", EditDocument).Methods("POST")
+	r.HandleFunc("/document/employee/{user_name}", GetDocumentsOfEmployee).Methods("GET")
 
 	if err := http.ListenAndServe(":3000", handlers.CORS(headersOk, originsOk, methodsOk)(r)); err != nil {
 		log.Fatal(err)
