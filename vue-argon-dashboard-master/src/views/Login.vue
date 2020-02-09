@@ -75,11 +75,11 @@ import EmployeeDataService from '@/service';
         handleSubmit(){
             EmployeeDataService.getEmployee(this.model.name).then( 
                (user => {
-                   console.log(user);
+                   //console.log(user);
                    this.user = user
                })
                .catch(e =>  {
-                   console.log(e)
+                   //console.log(e)
                })
            );
            if(this.user.name!==this.model.name)

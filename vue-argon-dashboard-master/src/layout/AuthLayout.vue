@@ -5,7 +5,7 @@
                   containerClasses="px-4 container"
                   expand>
             <router-link slot="brand" class="navbar-brand" to="/">
-                <img src="../assets/logo.png"/>
+                <img src="../assets/DocBabu.png" width="140px" height="auto"/>
             </router-link>
 
             <template v-slot="{closeMenu}">
@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-6 collapse-brand">
                             <router-link to="/">
-                                <img src="../assets/logo.png">
+                                <img src="../assets/DocBabu.png" width="140px" height="auto"/>
                             </router-link>
                         </div>
                         <div class="col-6 collapse-close">
