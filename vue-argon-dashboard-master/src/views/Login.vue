@@ -65,7 +65,6 @@ import EmployeeDataService from '@/service';
           name: '',
           password: ''
         },
-        userId : " ",
         temp : {},
         show: true
       }
