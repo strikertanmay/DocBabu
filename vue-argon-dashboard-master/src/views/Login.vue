@@ -65,7 +65,7 @@ import EmployeeDataService from '@/service';
           name: '',
           password: ''
         },
-        user : {},
+        userId : " ",
         temp : {},
         show: true
       }
@@ -81,7 +81,7 @@ import EmployeeDataService from '@/service';
                .catch(e =>  {
                    console.log(e)
                });
-
+                console.log(this.userId)
                 this.$router.push('/dashboard')
                 
         }

@@ -106,7 +106,10 @@
                 <h6 class="heading-small text-muted mb-4">Additional Information</h6>
                 <div class="pl-lg-4">
                   <div class="form-group">
-                    <base-input alternative label="Remarks">
+                    <base-input 
+                    alternative label="Remarks"
+                    v-model="model.path.remarks"
+                    >
                       <textarea
                         rows="4"
                         class="form-control form-control-alternative"
@@ -127,6 +130,7 @@
   </div>
 </template>
 <script>
+import EmployeeDataService from '@/service';
 export default {
   name: "user-profile",
   data() {
@@ -140,7 +144,8 @@ export default {
             priority: "",
             remark: ""
           }
-        ]
+        ],
+        remarks: ""
       }
     };
   },
@@ -151,9 +156,27 @@ export default {
     }
   },
   methods: {
-    add(index) {
+    add() {
       this.model.path.push({ name: "", priority: "", remark: ""});
-    }
+    },
+        
+    handleSubmit(){
+            var data = {
+            filename : this.model.id,
+            creatorId : this.model.creatorId,
+            associations : this.model.path,
+            remarks : this.model.remarks
+        };
+        console.log(data);  
+        EmployeeDataService.postDocument(data).then(
+            res => {
+                console.log(res);
+            }
+        ).catch(e => {
+            console.log(e)
+        });
+    },
+
   }
 };
 </script>
