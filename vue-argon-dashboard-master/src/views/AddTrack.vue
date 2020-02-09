@@ -41,8 +41,13 @@
                     <div class="col-md-12">
                       <base-input
                         alternative
+<<<<<<< HEAD
                         label="File name"
                         placeholder="enter file id"
+=======
+                        label="File Name"
+                        placeholder="enter file name"
+>>>>>>> 27ce5980a02d5be4ee4b33120441e2d014257fab
                         input-classes="form-control-alternative"
                         v-model="model.filename"
                       />
@@ -114,12 +119,15 @@
                         rows="4"
                         class="form-control form-control-alternative"
                         placeholder="A few words about you ..."
-                      >A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                      >Add some remarks over here.</textarea>
                     </base-input>
                   </div>
                 </div>
+
+                <div class="row">
                 <div class="pl-lg-4">
                   <base-button type="primary" class="my-4" @click="handleSubmit">Submit</base-button>
+                </div>
                 </div>
               </form>
             </template>
@@ -170,13 +178,15 @@ export default {
         console.log(data);  
         EmployeeDataService.postDocument(data).then(
             res => {
-                var fileURL = window.URL.createObjectURL(new Blob([res.data]));
-                var fileLink = document.createElement('a');
-                fileLink.href = fileURL;
-                fileLink.download = "qr.png";
-                URL.revokeObjectURL(fileLink.href);
-                console.log(fileLink);
-                fileLink.click();
+                // var fileURL = window.URL.createObjectURL(new Blob([res.data]));
+                // var fileLink = document.createElement('a');
+                // fileLink.href = fileURL;
+                // fileLink.download = "qr.png";
+                // URL.revokeObjectURL(fileLink.href);
+                // console.log(fileLink);
+                // fileLink.click();
+                console.log(res.data);
+                saveAs(blob, 'image_name.jpg');
             }
         ).catch(e => {
             console.log(e)

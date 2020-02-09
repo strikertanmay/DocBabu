@@ -67,7 +67,7 @@
     },
     mounted() {
       this.username=localStorage.name
-      console.log(this.username)
+      // console.log(this.username)
     },
     methods: {
       toggleSidebar() {
