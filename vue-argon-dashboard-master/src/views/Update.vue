@@ -10,8 +10,10 @@
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Update Track</h1>
-            <p class="text-white mt-0 mb-5">Update track for the processing of a file</p>
+            <h1 class="display-2 text-white">Update A Track</h1>
+            <p class="text-white mt-0 mb-5" style="font-size:20px">Update the track of a file in your hands. Begin with scanning the QR and stating the file information along with the sender's and recipient's details.
+              Mark the status as complete and specify the next authority to process the document further. The time for the latest modification and other details will be displayed to associated employees.
+            </p>
           </div>
         </div>
       </div>
@@ -26,9 +28,6 @@
                 <div class="col-8">
                   <h3 class="mb-0">Update Track</h3>
                 </div>
-                <!-- <div class="col-4 text-right">
-                                    <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-                </div>-->
               </div>
             </div>
             <template>

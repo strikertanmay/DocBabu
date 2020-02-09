@@ -70,19 +70,20 @@ import EmployeeDataService from '@/service';
         show: true
       }
     },
-
     methods : {
         handleSubmit(){
             EmployeeDataService.getEmployee(this.model.name).then
                (user => {
-                   console.log(user);
-                   this.user = user;
+                   console.log(user.id);
+                   localStorage.id=user.id;
+                   this.user = user
                })
                .catch(e =>  {
                    console.log(e)
                });
 
                 this.$router.push('/dashboard')
+                
         }
     }
   }

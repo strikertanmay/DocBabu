@@ -11,7 +11,9 @@
         <div class="row">
           <div class="col-lg-7 col-md-10">
             <h1 class="display-2 text-white">Create A Track</h1>
-            <p class="text-white mt-0 mb-5">Create a track for the processing of a new file</p>
+            <p class="text-white mt-0 mb-5" style="font-size:20px">Create a new track to trace a new file. Add the file's name, the path it will follow for complete processing and track it to completion.The stages of
+              processing maybe altered at any possible point by the authorised employees. A QR code for the file will be generated at this stage to facilitate the tracking of the document.
+            </p>
           </div>
         </div>
       </div>
@@ -47,22 +49,13 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-md-12">
                       <base-input
                         alternative
                         label="Created By"
                         placeholder="employee name"
                         input-classes="form-control-alternative"
-                        v-model="model.creatorName"
-                      />
-                    </div>
-                    <div class="col-lg-6">
-                      <base-input
-                        alternative
-                        label="Creation time"
-                        placeholder="time for creation of track"
-                        input-classes="form-control-alternative"
-                        v-model="model.createTime"
+                        v-model="model.creatorId"
                       />
                     </div>
                   </div>
@@ -78,7 +71,7 @@
                         label="Name"
                         placeholder="name"
                         input-classes="form-control-alternative"
-                        v-model="model.path.name"
+                        v-model="model.path[k].name"
                       />
                     </div>
                     <div class="col-lg-3">
@@ -87,7 +80,7 @@
                         label="Priority"
                         placeholder="priority of the stage"
                         input-classes="form-control-alternative"
-                        v-model="model.path.priority"
+                        v-model="model.path[k].priority"
                       />
                     </div>
                     <div class="col-lg-4">
@@ -96,7 +89,7 @@
                         label="Remark"
                         placeholder="remark"
                         input-classes="form-control-alternative"
-                        v-model="model.path.remark"
+                        v-model="model.path[k].remark"
                       />
                     </div>
                     <span>
@@ -140,8 +133,7 @@ export default {
     return {
       model: {
         id: "",
-        creatorName: "",
-        createTime: "",
+        creatorId: "",
         path: [
           {
             name: "",
@@ -155,7 +147,7 @@ export default {
   mounted() {
     if(localStorage.id)
     {
-      this.model.id = localStorage.id
+      this.model.creatorId = localStorage.id
     }
   },
   methods: {
