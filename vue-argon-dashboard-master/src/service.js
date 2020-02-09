@@ -8,6 +8,10 @@ class EmployeeDataService {
     postDocument(data){
         return http.post("/document", data)
     }
+
+    postUpdate(data){
+        return http.post("/document/edit",data)
+    }
 }
 
 export default new EmployeeDataService();

@@ -41,13 +41,8 @@
                     <div class="col-md-12">
                       <base-input
                         alternative
-<<<<<<< HEAD
                         label="File name"
-                        placeholder="enter file id"
-=======
-                        label="File Name"
                         placeholder="enter file name"
->>>>>>> 27ce5980a02d5be4ee4b33120441e2d014257fab
                         input-classes="form-control-alternative"
                         v-model="model.filename"
                       />
