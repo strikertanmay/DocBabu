@@ -80,16 +80,16 @@ import BaseAlertVue from '../components/BaseAlert.vue';
            );
         },
         handleSubmit(){
-            // this.getUser()
-            // if(this.user.name!==this.model.name)
-            // {
-            //     alert("No such user")
-            // }
-            // else
-            // {
-            //     this.$router.push('/dashboard')
-            // }
-            this.$router.push('/dashboard')
+            this.getUser()
+            if(this.user.name!==this.model.name)
+            {
+                alert("No such user")
+            }
+            else
+            {
+                this.$router.push('/dashboard')
+                localStorage.id=this.user.id
+            }
         }
     }
   }

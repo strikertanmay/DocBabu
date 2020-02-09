@@ -39,7 +39,7 @@
                                                         label="File ID"
                                                         placeholder="enter file id"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.id"
+                                                        v-model="model.fileid"
                                             />
                                         </div>
                                     </div>
@@ -49,8 +49,8 @@
                                                         label="Created By"
                                                         placeholder="employee name"
                                                         input-classes="form-control-alternative"
-                                                        v-model="model.creatorName"
-                                            />
+                                                        v-model="model.creatorId"
+                                            ></base-input>
                                         </div>
                                         <div class="col-lg-6">
                                             <base-input alternative=""
@@ -67,7 +67,7 @@
                                 <h6 class="heading-small text-muted mb-4">Track Information</h6>
                                 <div class="pl-lg-4">
                                     <div class="row" v-for="(input,k) in model.path" :key="k">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <base-input alternative=""
                                                         label="Name"
                                                         placeholder="name"
@@ -75,12 +75,20 @@
                                                         v-model="model.path.name"
                                             />
                                         </div>
-                                        <div class="col-lg-5">
+                                        <div class="col-lg-3">
                                             <base-input alternative=""
                                                         label="Priority"
                                                         placeholder="priority of the stage"
                                                         input-classes="form-control-alternative"
                                                         v-model="model.path.priority"
+                                            />
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <base-input alternative=""
+                                                        label="Remark"
+                                                        placeholder="remark"
+                                                        input-classes="form-control-alternative"
+                                                        v-model="model.path.remark"
                                             />
                                         </div>
                                         <span>
@@ -113,19 +121,26 @@
     data() {
       return {
         model: {
-          id: '',
-          creatorName: '',
+          fileid: '',
+          creatorId: '',
           createTime: '',
           path: [{
               name: '',
-              priority: ''
+              priority: '',
+              remark: ''
           }]
         }
       }
     },
+    mounted() {
+        if(localStorage.id)
+        {
+            this.model.creatorId=localStorage.id
+        }
+    },
     methods: {
         add(index) {
-             this.model.path.push({ name: '', priority: '' })
+             this.model.path.push({ name: '', priority: '', remark: '' })
            },
     } 
   };

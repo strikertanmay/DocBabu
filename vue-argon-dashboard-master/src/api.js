@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const client = axios.create({
-    baseURL: 'http://localhost:8081/',
+    baseURL: 'http://d94bef41.ngrok.io',
     json: true
   })
 
@@ -22,6 +22,6 @@ const client = axios.create({
         return this.execute('post', '/xyz', data);
     },
     getEmployee(data) {
-        return this.execute('post', '/abc', data);
+        return this.execute('get', '/abc', data);
     },
 };
