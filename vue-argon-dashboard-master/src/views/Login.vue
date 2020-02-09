@@ -74,16 +74,13 @@ import EmployeeDataService from '@/service';
         handleSubmit(){
             EmployeeDataService.getEmployee(this.model.name).then
                (user => {
-                   console.log(user.id);
-                   localStorage.id=user.id;
-                   this.user = user
+                   localStorage.id=user.data.id;
+                   localStorage.name=user.data.name;
                })
                .catch(e =>  {
                    console.log(e)
                });
-                console.log(this.userId)
-                this.$router.push('/dashboard')
-                
+                this.$router.push('/dashboard');
         }
     }
   }
