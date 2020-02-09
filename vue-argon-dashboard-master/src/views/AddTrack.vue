@@ -41,10 +41,10 @@
                     <div class="col-md-12">
                       <base-input
                         alternative
-                        label="File ID"
+                        label="File name"
                         placeholder="enter file id"
                         input-classes="form-control-alternative"
-                        v-model="model.id"
+                        v-model="model.filename"
                       />
                     </div>
                   </div>
@@ -136,7 +136,7 @@ export default {
   data() {
     return {
       model: {
-        id: "",
+        filename: "",
         creatorName: "",
         path: [
           {
@@ -150,9 +150,9 @@ export default {
     };
   },
   mounted() {
-    if(localStorage.id)
+    if(localStorage.name)
     {
-      this.model.creatorName = localStorage.userName
+      this.model.creatorName = localStorage.name
     }
   },
   methods: {
@@ -162,7 +162,7 @@ export default {
         
     handleSubmit(){
             var data = {
-            filename : this.model.id,
+            filename : this.model.filename,
             creator_name : this.model.creatorName,
             associations : this.model.path,
             remarks : this.model.remarks
@@ -170,7 +170,13 @@ export default {
         console.log(data);  
         EmployeeDataService.postDocument(data).then(
             res => {
-                console.log(res);
+                var fileURL = window.URL.createObjectURL(new Blob([res.data]));
+                var fileLink = document.createElement('a');
+                fileLink.href = fileURL;
+                fileLink.download = "qr.png";
+                URL.revokeObjectURL(fileLink.href);
+                console.log(fileLink);
+                fileLink.click();
             }
         ).catch(e => {
             console.log(e)

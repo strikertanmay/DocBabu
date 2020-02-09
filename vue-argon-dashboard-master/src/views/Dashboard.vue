@@ -4,44 +4,44 @@
             <!-- Card stats -->
             <div class="row">
                 <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
+                    <stats-card title="Total Files Pending"
                                 type="gradient-red"
-                                sub-title="350,897"
+                                sub-title="32"
                                 icon="ni ni-active-40"
                                 class="mb-4 mb-xl-0"
                     >
 
                         <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> </span>
                             <span class="text-nowrap">Since last month</span>
                         </template>
                     </stats-card>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
+                    <stats-card title="Last File Signed"
                                 type="gradient-orange"
-                                sub-title="2,356"
+                                sub-title="Aparoksha_Budget'19"
                                 icon="ni ni-chart-pie-35"
                                 class="mb-4 mb-xl-0"
                     >
 
                         <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 12.18%</span>
-                            <span class="text-nowrap">Since last month</span>
+                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> </span>
+                            <span class="text-nowrap">2 days ago</span>
                         </template>
                     </stats-card>
                 </div>
                 <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Sales"
+                    <stats-card title="Latest File Pending"
                                 type="gradient-green"
-                                sub-title="924"
+                                sub-title="Academic_Calender'20"
                                 icon="ni ni-money-coins"
                                 class="mb-4 mb-xl-0"
                     >
 
                         <template slot="footer">
-                            <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 5.72%</span>
-                            <span class="text-nowrap">Since last month</span>
+                            <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i></span>
+                            <span class="text-nowrap">Since 1 day</span>
                         </template>
                     </stats-card>
 
