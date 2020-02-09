@@ -41,10 +41,10 @@
                     <div class="col-md-12">
                       <base-input
                         alternative
-                        label="File ID"
-                        placeholder="enter file id"
+                        label="File name"
+                        placeholder="enter file name"
                         input-classes="form-control-alternative"
-                        v-model="model.id"
+                        v-model="model.filename"
                       />
                     </div>
                   </div>
@@ -55,7 +55,7 @@
                         label="Created By"
                         placeholder="employee name"
                         input-classes="form-control-alternative"
-                        v-model="model.creatorId"
+                        v-model="model.creatorName"
                       />
                     </div>
                   </div>
@@ -89,7 +89,7 @@
                         label="Remark"
                         placeholder="remark"
                         input-classes="form-control-alternative"
-                        v-model="model.path[k].remark"
+                        v-model="model.path[k].comment"
                       />
                     </div>
                     <span>
@@ -114,12 +114,15 @@
                         rows="4"
                         class="form-control form-control-alternative"
                         placeholder="A few words about you ..."
-                      >A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                      >Add some remarks over here.</textarea>
                     </base-input>
                   </div>
                 </div>
+
+                <div class="row">
                 <div class="pl-lg-4">
                   <base-button type="primary" class="my-4" @click="handleSubmit">Submit</base-button>
+                </div>
                 </div>
               </form>
             </template>
@@ -136,13 +139,13 @@ export default {
   data() {
     return {
       model: {
-        id: "",
-        creatorId: "",
+        filename: "",
+        creatorName: "",
         path: [
           {
             name: "",
             priority: "",
-            remark: ""
+            comment: ""
           }
         ],
         remarks: ""
@@ -150,27 +153,35 @@ export default {
     };
   },
   mounted() {
-    if(localStorage.id)
+    if(localStorage.name)
     {
-      this.model.creatorId = localStorage.id
+      this.model.creatorName = localStorage.name
     }
   },
   methods: {
     add() {
-      this.model.path.push({ name: "", priority: "", remark: ""});
+      this.model.path.push({ name: "", priority: "", comment: ""});
     },
         
     handleSubmit(){
             var data = {
-            filename : this.model.id,
-            creator_id : this.model.creatorId,
+            filename : this.model.filename,
+            creator_name : this.model.creatorName,
             associations : this.model.path,
             remarks : this.model.remarks
         };
         console.log(data);  
         EmployeeDataService.postDocument(data).then(
             res => {
-                console.log(res);
+                // var fileURL = window.URL.createObjectURL(new Blob([res.data]));
+                // var fileLink = document.createElement('a');
+                // fileLink.href = fileURL;
+                // fileLink.download = "qr.png";
+                // URL.revokeObjectURL(fileLink.href);
+                // console.log(fileLink);
+                // fileLink.click();
+                console.log(res.data);
+                saveAs(blob, 'image_name.jpg');
             }
         ).catch(e => {
             console.log(e)

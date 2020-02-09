@@ -71,10 +71,9 @@ import EmployeeDataService from '@/service';
     },
     methods : {
         handleSubmit(){
-            EmployeeDataService.getEmployee(this.model.name).then
-               (user => {
-                   localStorage.id=user.data.id;
+            EmployeeDataService.getEmployee(this.model.name).then(user => {
                    localStorage.name=user.data.name;
+                   localStorage.id=user.data.id;
                })
                .catch(e =>  {
                    console.log(e)

@@ -38,10 +38,10 @@
                     <div class="col-md-12">
                       <base-input
                         alternative
-                        label="File ID"
-                        placeholder="enter file id"
+                        label="File Name"
+                        placeholder="enter file name"
                         input-classes="form-control-alternative"
-                        v-model="model.id"
+                        v-model="model.filename"
                       />
                     </div>
                   </div>
@@ -56,12 +56,15 @@
                       />
                     </div>
                     <div class="col-lg-6">
-                      <base-input
+                      <input
+                        type="file"
+                        accept="image/*" 
+                        @change="uploadImage" 
+                        id="file-input"
                         alternative
-                        label="Received time"
-                        placeholder="time for creation of track"
+                        label="QR Code"
+                        placeholder="upload qr code for file"
                         input-classes="form-control-alternative"
-                        v-model="model.receiveTime"
                       />
                     </div>
                   </div>
@@ -117,18 +120,45 @@
   </div>
 </template>
 <script>
+import EmployeeDataService from '@/service';
 export default {
   name: "user-profile",
   data() {
     return {
       model: {
-        id: "",
+        filename: "",
         receivedName: "",
         receiveTime: "",
         status: "",
-        send: ""
+        send: "",
+        qr: null
       }
     };
+  },
+  methods: {
+    uploadImage(e){
+                const image = e.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(image);
+                reader.onload = e =>{
+                    this.model.qr = e.target.result;
+                    console.log(this.model.qr);
+                };
+            },
+    handleSubmit() {
+            var data = {
+            user_id : localStorage.id,
+            image : IMAGE,
+        };
+        console.log(data);  
+        EmployeeDataService.postUpdate(data).then(
+            res => {
+                console.log(res.data);
+            }
+        ).catch(e => {
+            console.log(e)
+        });
+    }
   }
 };
 </script>
