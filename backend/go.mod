@@ -12,6 +12,8 @@ require (
 	github.com/gorilla/mux v1.7.3
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/mattn/go-shellwords v1.0.10 // indirect
+	github.com/robpike/filter v0.0.0-20150108201509-2984852a2183
+	github.com/thoas/go-funk v0.5.0
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 	gopkg.in/urfave/cli.v1 v1.20.0 // indirect
